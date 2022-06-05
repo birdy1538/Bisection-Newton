@@ -30,9 +30,9 @@ def main():
     def f(v): return expr.evalf(subs={"x": v})
 
     result, iteraciones = choose_method(metodo, f, expr)
-    if not result:
+    if result == None:
         return
-    print(f"\nEl resultado es: {result} luego de {iteraciones} iteraciones",)
+    print(f"\nEl resultado es: {result} luego de {iteraciones} iteraciones")
 
 
 if __name__ == "__main__":
