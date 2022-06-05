@@ -1,10 +1,7 @@
-import numpy as np
-
-
 def secante(f):
 
-    x0 = float(print('Ingrese el limite X0:'))
-    x1 = float(print('Ingrese el limite X-1:'))
+    x0 = float(input('Ingrese el limite X0: '))
+    x1 = float(input('Ingrese el limite X-1: '))
 
     f0 = f(x0)
     f1 = f(x1)
