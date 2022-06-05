@@ -3,10 +3,15 @@ from sympy import sympify
 from newton import newton
 from biseccion import biseccion
 
-metodos = {
-    1: newton,
-    2: biseccion
-}
+
+def choose_method(method, f, expr):
+    if method == 1:
+        return newton(f, expr)
+    elif method == 2:
+        return biseccion(f)
+    else:
+        print("Método no válido")
+        return None
 
 
 def main():
@@ -22,13 +27,12 @@ def main():
 
     metodo = int(input("> "))
 
-    if metodo not in metodos.keys():
-        print("Método no válido")
-        return
-
     def f(v): return expr.evalf(subs={"x": v})
 
-    print("\nEl resultado es:", metodos[metodo](f, expr))
+    result, iteraciones = choose_method(metodo, f, expr)
+    if not result:
+        return
+    print(f"\nEl resultado es: {result} luego de {iteraciones} iteraciones",)
 
 
 if __name__ == "__main__":

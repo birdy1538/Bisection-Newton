@@ -8,8 +8,11 @@ def newton(f, expr):
     y_diff = Derivative(expr, x)
     def g(v): return y_diff.doit().evalf(subs={x: v})
 
-    while(abs(f(r)) > 0.0000000001):
+    iteraciones = 0
+    while(abs(f(r)) > 1e-5):
         fa = f(r)
         fb = g(r)
         r -= fa/fb
-    return r
+        iteraciones += 1
+
+    return r, iteraciones
