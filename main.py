@@ -1,10 +1,10 @@
 from sympy import sympify
 
-from secante import secante
+from newton import newton
 from biseccion import biseccion
 
 metodos = {
-    1: secante,
+    1: newton,
     2: biseccion
 }
 
@@ -17,7 +17,7 @@ def main():
     expr = sympify(input("Ingrese la ecuación: "))
 
     print("\nQué método desea utilizar para resolver la ecuación?")
-    print("1. Método de la Secante")
+    print("1. Método de Newton Raphson")
     print("2. Método de Bisección")
 
     metodo = int(input("> "))
@@ -28,7 +28,7 @@ def main():
 
     def f(v): return expr.evalf(subs={"x": v})
 
-    print("\nEl resultado es:", metodos[metodo](f))
+    print("\nEl resultado es:", metodos[metodo](f, expr))
 
 
 if __name__ == "__main__":
